@@ -1,4 +1,8 @@
-package prisa.com.surveys;
+package prisa.com.surveys.Request;
+
+/**
+ * Created by Admin on 7/19/2016 AD.
+ */
 
 import android.util.Log;
 
@@ -8,10 +12,6 @@ import java.io.IOException;
 
 import retrofit.Call;
 import retrofit.Response;
-
-/**
- * Created by Admin on 7/19/2016 AD.
- */
 
 public abstract class BaseRequest<T, R> extends SpiceRequest<T> {
 
@@ -69,5 +69,4 @@ public abstract class BaseRequest<T, R> extends SpiceRequest<T> {
     public void setResultClass(Class<T> resultClass) {
         this.resultClass = resultClass;
     }
-
 }
