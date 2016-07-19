@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/ivSurvey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/SurveysTWTextAppearance.HeadLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/amber50"
+        tool:text="Octave" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/SurveysTWTextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/amber50"
+        tool:text="Guest Satisfaction Survey" />
+
+    <Button
+        android:id="@+id/btSurvey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/circular_bt_red"
+        android:padding="18dp"
+        android:text="Take the survey"
+        android:textAllCaps="false"
+        android:textColor="@color/amber50"
+        android:textSize="24dp" />
+
+</RelativeLayout>
