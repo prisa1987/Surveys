@@ -4,6 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -20,17 +24,51 @@ public class MainActivity extends BaseActivity implements SurveyViewAction {
 
     @BindView(R.id.vpSurvey) ViewPager vpSurvey;
     @BindView(R.id.ciSurvey) CirclePageIndicator ciSurvey;
+    @BindView(R.id.tbSurvey) Toolbar tbSurvey;
+    @BindView(R.id.tbTitle) TextView tbTitle;
 
     private SurveyPresenter presenter;
     private SurveyViewpagerAdapter viewPagerApdater;
 
     @Override
-    int getContentLayout() { return R.layout.activity_survey; }
+    int getContentLayout() {
+        return R.layout.activity_survey;
+    }
 
     @Override
     void setUpUI() {
-        presenter = new SurveyPresenter(this, spiceManager,this);
+        setupToolbar();
+        presenter = new SurveyPresenter(this, spiceManager, this);
         presenter.requestSurveys();
+    }
+
+    //================================
+    //Toolbar
+    //================================
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_survey, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.miHamburger: {
+                //TODO: hamburger menu
+                break;
+            }
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    void setupToolbar() {
+        tbSurvey.setTitle("");
+        tbTitle.setText("Surveys");
+        setSupportActionBar(tbSurvey);
     }
 
     @Override
