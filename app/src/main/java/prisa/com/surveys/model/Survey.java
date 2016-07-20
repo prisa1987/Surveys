@@ -21,6 +21,7 @@ public class Survey extends RealmObject {
     String title;
     String cover_image_url;
     String type;
+    String description;
 
     public String getId() {
         return id;
@@ -32,6 +33,10 @@ public class Survey extends RealmObject {
 
     public String getType() {
         return type;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getCover_image_url() {

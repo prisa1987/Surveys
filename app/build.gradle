@@ -43,6 +43,13 @@ android {
     }
 }
 
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -63,5 +70,7 @@ dependencies {
             }
     compile "com.google.code.gson:gson:$gson_version"
     compile "com.squareup.picasso:picasso:$picasso_version"
+    compile 'me.relex:circleindicator:1.2.1@aar'
+    compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
 }
 
