@@ -12,6 +12,6 @@ import retrofit.http.Query;
 public interface SurveyAPI {
 
     @GET("/app/surveys.json")
-    Call<GetAllSurveyResponse> getAllSurvey(@Query("access_token") String accessToken);
+    Call<GetAllSurveyResponse> getAllSurvey(@Query("access_token") String accessToken, @Query("limit") String limit);
 
 }

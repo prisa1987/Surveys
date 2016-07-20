@@ -10,7 +10,7 @@ import prisa.com.surveys.model.Survey;
 /**
  * Created by Admin on 7/19/2016 AD.
  */
-public class GetAllSurveyResponse  {
+public class GetAllSurveyResponse {
 
     public List<Survey> surveys;
 

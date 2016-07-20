@@ -7,6 +7,7 @@ import com.octo.android.robospice.SpiceManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import io.realm.Realm;
 import prisa.com.surveys.Response.GetAllSurveyResponse;
@@ -44,10 +45,6 @@ public class SurveyPresenter extends BasePresenter {
         viewAction.refreshData();
     }
 
-//    public SurveyItemPresenter buildItemPrensenter(SurveyViewHolder viewHolder) {
-//        return  new SurveyItemPresenter(viewHolder);
-//    }
-
     public SurveyItemFragmentPresenter buildItemPrensenter(SurveyItemFragment itemFragment) {
         return new SurveyItemFragmentPresenter(itemFragment);
     }
@@ -66,10 +63,8 @@ public class SurveyPresenter extends BasePresenter {
         }
     }
 
-
     public List<SurveyItemFragment> getFragments() {
         return fragments;
     }
-
 
 }
