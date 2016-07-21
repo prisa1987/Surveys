@@ -10,8 +10,8 @@ import retrofit.Call;
 
 public class GetAllSurveysRequest extends BaseRequest<GetAllSurveyResponse, SurveyAPI>{
 
-    String accessToken;
-    String page = "50";
+    private String accessToken;
+
     public GetAllSurveysRequest(String accessToken) {
         super(GetAllSurveyResponse.class, SurveyAPI.class);
         this.accessToken = accessToken;
@@ -19,6 +19,6 @@ public class GetAllSurveysRequest extends BaseRequest<GetAllSurveyResponse, Surv
 
     @Override
     public Call<GetAllSurveyResponse> callApi() {
-        return service.getAllSurvey(accessToken);
+        return service.getAllSurvey(accessToken, "1");
     }
 }

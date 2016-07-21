@@ -25,14 +25,14 @@ public abstract class BasePresenter {
     }
 
     public void onCreate() {
-        EventBus.getDefault().register(this);
+
     }
 
     public void onResume() {
-
+        EventBus.getDefault().register(this);
     }
 
-    public void onDestroy() {
+    public void onPause() {
         EventBus.getDefault().unregister(this);
     }
 

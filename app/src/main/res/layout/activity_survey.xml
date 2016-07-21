@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbSurvey"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/black"
+        android:elevation="@dimen/tb_survey_elevation">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivRefresh"
+                android:layout_width="@dimen/iv_refresh_width_height"
+                android:layout_height="@dimen/iv_refresh_width_height"
+                android:rotation="270"
+                android:src="@drawable/ic_refresh" />
+
+            <TextView
+                android:id="@+id/tbTitle"
+                style="@style/SurveysTWTextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                tool:text="SURVEYS" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpSurvey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tbSurvey" />
+
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/ciSurvey"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/ci_survey_margin"
+        android:orientation="vertical" />
+
+</RelativeLayout>

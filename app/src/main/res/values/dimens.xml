@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="iv_refresh_width_height">30dp</dimen>
+    <dimen name="tb_survey_elevation">1dp</dimen>
+    <dimen name="ci_survey_margin">10dp</dimen>
+</resources>

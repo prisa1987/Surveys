@@ -5,4 +5,5 @@ package prisa.com.surveys.viewAction;
  */
 
 public interface SurveyViewAction {
+    void refreshData();
 }
