@@ -9,6 +9,7 @@ import com.octo.android.robospice.persistence.CacheManager;
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.request.CachedSpiceRequest;
 import com.octo.android.robospice.request.listener.RequestListener;
+import com.squareup.okhttp.Credentials;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -23,7 +24,9 @@ import java.security.cert.CertificateException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+import prisa.com.surveys.Request.BaseRequest;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
@@ -37,26 +40,44 @@ public class SurveysService extends SpiceService {
     Retrofit retrofit;
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        try {
+            retrofit = createRestAdapterBuilder().build();
+        } catch (CertificateException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public CacheManager createCacheManager(Application application) throws CacheCreationException {
         CacheManager manager = new CacheManager();
         return manager;
     }
 
     public Retrofit.Builder createRestAdapterBuilder() throws CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
-        // Create a very simple REST adapter which points the GitHub API.
         Retrofit.Builder rb = new Retrofit.Builder();
         rb.client(createHttpsClient()).baseUrl(BuildConfig.API_URL)
-                .addConverterFactory(GsonConverterFactory.create());
+                .addConverterFactory(GsonConverterFactory.create(SurveyGsonBuilder.getGsonBuilder().create()));
         return rb;
     }
 
-    public Object getRetrofitService(Class tClass) {
+    private Object getRetrofitService(Class tClass) {
         retrofitInterfaceToServiceMap.put(tClass, retrofit.create(tClass));
         return retrofit.create(tClass);
     }
 
     @Override
     public void addRequest(CachedSpiceRequest<?> request, Set<RequestListener<?>> listRequestListener) {
+
         BaseRequest baseRequest = (BaseRequest) request.getSpiceRequest();
         baseRequest.setRetrofitService(getRetrofitService(baseRequest.getApi()));
         super.addRequest(request, listRequestListener);
@@ -64,24 +85,20 @@ public class SurveysService extends SpiceService {
 
     private OkHttpClient createHttpsClient() throws CertificateException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
         OkHttpClient client = new OkHttpClient();
+        client.setConnectTimeout(5, TimeUnit.MINUTES);
+        client.setReadTimeout(5, TimeUnit.MINUTES);
         client.interceptors().add(new Interceptor() {
                                       @Override
                                       public Response intercept(Interceptor.Chain chain) throws IOException {
                                           com.squareup.okhttp.Request request = chain.request();
-//                                          if(!seeksterPreference.getAccessToken().isEmpty()) {
-//                                              request.newBuilder().header("Authorization", "Bearer "+seeksterPreference.getAccessToken()).build();
-//                                              return chain.proceed(request);
-//                                          } else {
-//                                              return chain.proceed(request);
-//                                          }
-                                          String username = "9b5ddd4f-a1b5-4232-8da9-fb554024ddf5";
-                                          String credentials = username + ":" + "TuzvXa/ZQqtA3PcI8SX0KOMCAR3Sg7U6zSud3HOeu6JBLkiOfw5fzasO+nAiZQQ+sBCG3Zt6DRBfLd2JdhVO4w==";
-                                          String basic = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
-                                          Request modifiedRequest = request.newBuilder().addHeader("Authorization", basic).build();
-                                          return chain.proceed(modifiedRequest);
+                                          String userName = "usay";
+                                          String password = "isc00l";
+                                          com.squareup.okhttp.Request modifileRequest = request.newBuilder()
+                                                  .addHeader("Authorization", Credentials.basic(userName, password))
+                                                  .build();
+                                          return chain.proceed(modifileRequest);
                                       }
                                   }
-//
         );
         client.interceptors().add(new LoggingInterceptor());
 

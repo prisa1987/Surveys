@@ -24,7 +24,7 @@ abstract class BaseActivity extends AppCompatActivity {
     abstract void setUpUI();
     final String REALM_DATABASE = "surveys.realm";
 
-    private SpiceManager spiceManager = new SpiceManager(SurveysService.class);
+     SpiceManager spiceManager = new SpiceManager(SurveysService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

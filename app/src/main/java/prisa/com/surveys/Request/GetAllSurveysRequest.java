@@ -1,0 +1,24 @@
+package prisa.com.surveys.Request;
+
+import prisa.com.surveys.Response.GetAllSurveyResponse;
+import prisa.com.surveys.SurveyAPI;
+import retrofit.Call;
+
+/**
+ * Created by Admin on 7/19/2016 AD.
+ */
+
+public class GetAllSurveysRequest extends BaseRequest<GetAllSurveyResponse, SurveyAPI>{
+
+    String accessToken;
+    String page = "50";
+    public GetAllSurveysRequest(String accessToken) {
+        super(GetAllSurveyResponse.class, SurveyAPI.class);
+        this.accessToken = accessToken;
+    }
+
+    @Override
+    public Call<GetAllSurveyResponse> callApi() {
+        return service.getAllSurvey(accessToken);
+    }
+}
