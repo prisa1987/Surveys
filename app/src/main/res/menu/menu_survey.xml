@@ -5,7 +5,7 @@
     <item
         android:id="@+id/miHamburger"
         android:icon="@drawable/ic_menu"
-        android:title="Navigation"
+        android:title="@string/mi_hamburger"
         app:showAsAction="always"/>
 
 </menu>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import prisa.com.surveys.R;
 import prisa.com.surveys.presenter.SurveyPresenter;
 import prisa.com.surveys.viewAction.SurveyViewAction;
@@ -20,7 +21,7 @@ import prisa.com.surveys.viewAction.SurveyViewAction;
  * Created by Admin on 7/19/2016 AD.
  */
 
-public class MainActivity extends BaseActivity implements SurveyViewAction {
+public class SurveyActivity extends BaseActivity implements SurveyViewAction {
 
     @BindView(R.id.vpSurvey) ViewPager vpSurvey;
     @BindView(R.id.ciSurvey) CirclePageIndicator ciSurvey;
@@ -28,7 +29,7 @@ public class MainActivity extends BaseActivity implements SurveyViewAction {
     @BindView(R.id.tbTitle) TextView tbTitle;
 
     private SurveyPresenter presenter;
-    private SurveyViewpagerAdapter viewPagerApdater;
+    private SurveyViewpagerAdapter viewPagerAdapter;
 
     @Override
     int getContentLayout() {
@@ -36,9 +37,12 @@ public class MainActivity extends BaseActivity implements SurveyViewAction {
     }
 
     @Override
-    void setUpUI() {
+    void setUp() {
         setupToolbar();
         presenter = new SurveyPresenter(this, spiceManager, this);
+        viewPagerAdapter = new SurveyViewpagerAdapter(this.getSupportFragmentManager());
+        vpSurvey.setAdapter(viewPagerAdapter);
+        ciSurvey.setViewPager(vpSurvey);
         presenter.requestSurveys();
     }
 
@@ -65,17 +69,10 @@ public class MainActivity extends BaseActivity implements SurveyViewAction {
         return super.onOptionsItemSelected(item);
     }
 
-    void setupToolbar() {
+    private void setupToolbar() {
         tbSurvey.setTitle("");
-        tbTitle.setText("Surveys");
+        tbTitle.setText(R.string.tb_survey_title);
         setSupportActionBar(tbSurvey);
-    }
-
-    @Override
-    public void refreshData() {
-        viewPagerApdater = new SurveyViewpagerAdapter(this.getSupportFragmentManager());
-        vpSurvey.setAdapter(viewPagerApdater);
-        ciSurvey.setViewPager(vpSurvey);
     }
 
     @Override
@@ -90,6 +87,16 @@ public class MainActivity extends BaseActivity implements SurveyViewAction {
         presenter.onPause();
     }
 
+
+    @Override
+    @OnClick(R.id.ivRefresh)
+    public void refreshData() {
+        viewPagerAdapter.notifyDataSetChanged();
+    }
+
+    //================================
+    //Adapter
+    //================================
     private class SurveyViewpagerAdapter extends FragmentPagerAdapter {
 
         SurveyViewpagerAdapter(FragmentManager fm) {
@@ -98,12 +105,12 @@ public class MainActivity extends BaseActivity implements SurveyViewAction {
 
         @Override
         public Fragment getItem(int position) {
-            return presenter.getFragments().get(position);
+            return presenter.getItemFragments().get(position);
         }
 
         @Override
         public int getCount() {
-            return presenter.getFragments().size();
+            return presenter.getItemFragments().size();
         }
     }
 

@@ -11,7 +11,7 @@ import prisa.com.surveys.viewAction.SurveyItemViewAction;
 public class SurveyItemFragmentPresenter {
 
     Survey survey;
-    SurveyItemViewAction viewAction;
+    private SurveyItemViewAction viewAction;
 
     public SurveyItemFragmentPresenter(SurveyItemFragment itemFragment) {
         this.viewAction = itemFragment;

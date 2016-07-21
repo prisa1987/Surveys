@@ -21,7 +21,7 @@ import prisa.com.surveys.SurveysService;
 abstract class BaseActivity extends AppCompatActivity {
 
     abstract int getContentLayout();
-    abstract void setUpUI();
+    abstract void setUp();
     final String REALM_DATABASE = "surveys.realm";
 
      SpiceManager spiceManager = new SpiceManager(SurveysService.class);
@@ -30,11 +30,10 @@ abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRealmConfiguration();
-//        Realm.getDefaultInstance();
         setContentView(getContentLayout());
         ButterKnife.bind(this);
         handleIntent(getIntent());
-        setUpUI();
+        setUp();
     }
 
     @Override

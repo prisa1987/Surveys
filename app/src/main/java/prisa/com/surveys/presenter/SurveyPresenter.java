@@ -7,7 +7,6 @@ import com.octo.android.robospice.SpiceManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import io.realm.Realm;
 import prisa.com.surveys.Response.GetAllSurveyResponse;
@@ -24,7 +23,7 @@ public class SurveyPresenter extends BasePresenter {
 
     private SurveyViewAction viewAction;
     private List<Survey> surveys;
-    List<SurveyItemFragment> fragments = new ArrayList();
+    List<SurveyItemFragment> itemFragments = new ArrayList<>();
 
     public SurveyPresenter(Context context, SpiceManager spiceManager, SurveyViewAction viewAction) {
         super(context, spiceManager);
@@ -45,7 +44,7 @@ public class SurveyPresenter extends BasePresenter {
         viewAction.refreshData();
     }
 
-    public SurveyItemFragmentPresenter buildItemPrensenter(SurveyItemFragment itemFragment) {
+    SurveyItemFragmentPresenter buildItemPresenter(SurveyItemFragment itemFragment) {
         return new SurveyItemFragmentPresenter(itemFragment);
     }
 
@@ -53,18 +52,18 @@ public class SurveyPresenter extends BasePresenter {
         return surveys;
     }
 
-    public void buildFragmentList() {
+    void buildFragmentList() {
         for (Survey survey : surveys) {
             SurveyItemFragment fragment = new SurveyItemFragment();
-            SurveyItemFragmentPresenter presenter = buildItemPrensenter(fragment);
+            SurveyItemFragmentPresenter presenter = buildItemPresenter(fragment);
             fragment.setPresenter(presenter);
             presenter.survey = survey;
-            fragments.add(fragment);
+            itemFragments.add(fragment);
         }
     }
 
-    public List<SurveyItemFragment> getFragments() {
-        return fragments;
+    public List<SurveyItemFragment> getItemFragments() {
+        return itemFragments;
     }
 
 }

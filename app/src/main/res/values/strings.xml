@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Surveys</string>
+    <string name="mi_hamburger">Navigation</string>
+    <string name="tb_survey_title">Surveys</string>
 </resources>
