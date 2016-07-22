@@ -39,7 +39,7 @@ public class SurveyActivity extends BaseActivity implements SurveyViewAction {
     @Override
     void setUp() {
         setupToolbar();
-        presenter = new SurveyPresenter(this, spiceManager, this);
+        presenter = new SurveyPresenter(this, spiceManager, this, getString(R.string.access_token));
         viewPagerAdapter = new SurveyViewpagerAdapter(this.getSupportFragmentManager());
         vpSurvey.setAdapter(viewPagerAdapter);
         ciSurvey.setViewPager(vpSurvey);

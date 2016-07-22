@@ -17,7 +17,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', 'API_URL', '"https://www-staging.usay.co'
+            buildConfigField 'String', 'API_URL', 'https://www-staging.usay.co'
         }
 
         debug {

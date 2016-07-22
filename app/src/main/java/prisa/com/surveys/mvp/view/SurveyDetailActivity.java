@@ -16,13 +16,13 @@ public class SurveyDetailActivity extends BaseActivity {
     static String ARG_DESCRIPTION = "arg_description";
     static String ARG_TYPE = "arg_type";
 
-    @BindView(R.id.tvTitle)  TextView tvTitle;
+    @BindView(R.id.tvTitle) TextView tvTitle;
     @BindView(R.id.tvDescription) TextView tvDescription;
     @BindView(R.id.tvType) TextView tvType;
 
     private String title;
-    private  String description;
-    private  String type;
+    private String description;
+    private String type;
 
     @Override
     int getContentLayout() {

@@ -24,14 +24,16 @@ public class SurveyPresenter extends BasePresenter {
     private SurveyViewAction viewAction;
     private List<Survey> surveys;
     private List<SurveyItemFragment> itemFragments = new ArrayList<>();
+    private String accessToken;
 
-    public SurveyPresenter(Context context, SpiceManager spiceManager, SurveyViewAction viewAction) {
+    public SurveyPresenter(Context context, SpiceManager spiceManager, SurveyViewAction viewAction, String accessToken) {
         super(context, spiceManager);
         this.viewAction = viewAction;
+        this.accessToken = accessToken;
     }
 
     public void requestSurveys() {
-        SurveyExecutor executor = new SurveyExecutor(Realm.getDefaultInstance(), getSpiceManager());
+        SurveyExecutor executor = new SurveyExecutor(Realm.getDefaultInstance(), getSpiceManager(), accessToken);
         surveys = executor.execute();
         buildFragmentList();
         viewAction.refreshData();

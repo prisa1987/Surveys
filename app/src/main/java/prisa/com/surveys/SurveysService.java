@@ -35,6 +35,8 @@ import retrofit.Retrofit;
 
 public class SurveysService extends SpiceService {
 
+    String username;
+    String password;
     Map retrofitInterfaceToServiceMap = new HashMap();
     Retrofit retrofit;
 
@@ -90,8 +92,8 @@ public class SurveysService extends SpiceService {
                                       @Override
                                       public Response intercept(Interceptor.Chain chain) throws IOException {
                                           com.squareup.okhttp.Request request = chain.request();
-                                          String userName = "usay";
-                                          String password = "isc00l";
+                                          String userName = getString(R.string.userName);
+                                          String password = getString(R.string.password);
                                           com.squareup.okhttp.Request modifileRequest = request.newBuilder()
                                                   .addHeader("Authorization", Credentials.basic(userName, password))
                                                   .build();
