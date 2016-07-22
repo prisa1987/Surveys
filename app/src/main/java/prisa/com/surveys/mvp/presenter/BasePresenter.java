@@ -1,4 +1,4 @@
-package prisa.com.surveys.presenter;
+package prisa.com.surveys.mvp.presenter;
 
 import android.content.Context;
 

@@ -10,8 +10,30 @@
         android:layout_marginTop="10dp"
         style="@style/SurveysTWTextAppearance.HeadLine"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:textAlignment="center"
         tool:text="Octave" />
+
+    <TextView
+        android:id="@+id/tvType"
+        style="@style/SurveysTWTextAppearance.Title"
+        android:layout_margin="@dimen/tv_type_margin"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:textColor="@color/amber500"
+        android:layout_height="wrap_content"
+        tool:text="Restaurant" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SurveysTWTextAppearance.Title"
+        android:layout_margin="@dimen/tv_title_desction_margin"
+        tool:text="The reference to DisplayMessageActivity will raise an error
+        if you’re using an IDE such as Android Studio because the class doesn’t exist yet.
+         Ignore the error for now; you’ll create the class soon." />
+
+
 
 </LinearLayout>

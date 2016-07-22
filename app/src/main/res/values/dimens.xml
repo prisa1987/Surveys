@@ -3,4 +3,6 @@
     <dimen name="iv_refresh_width_height">30dp</dimen>
     <dimen name="tb_survey_elevation">1dp</dimen>
     <dimen name="ci_survey_margin">10dp</dimen>
+    <dimen name="tv_title_desction_margin">10dp</dimen>
+    <dimen name="tv_type_margin">8dp</dimen>
 </resources>
