@@ -1,8 +1,8 @@
-package prisa.com.surveys.presenter;
+package prisa.com.surveys.mvp.presenter;
 
-import prisa.com.surveys.model.Survey;
-import prisa.com.surveys.view.SurveyItemFragment;
-import prisa.com.surveys.viewAction.SurveyItemViewAction;
+import prisa.com.surveys.mvp.model.Survey;
+import prisa.com.surveys.mvp.view.SurveyItemFragment;
+import prisa.com.surveys.mvp.viewAction.SurveyItemViewAction;
 
 /**
  * Created by Admin on 7/20/2016 AD.
@@ -21,6 +21,7 @@ public class SurveyItemFragmentPresenter {
         viewAction.setBackground(survey.getCover_image_url());
         viewAction.setTitle(survey.getTitle());
         viewAction.setDescription(survey.getDescription());
+        viewAction.setType(survey.getType());
     }
 
 }

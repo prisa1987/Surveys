@@ -1,4 +1,4 @@
-package prisa.com.surveys.view;
+package prisa.com.surveys.mvp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,8 +56,8 @@ abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void handle(Object event) {
-
+    public void handle(OnBackPressedEvent event) {
+        finish();
     }
 
     public void handleIntent(Intent intent) {

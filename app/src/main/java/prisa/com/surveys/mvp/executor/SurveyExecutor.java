@@ -1,4 +1,4 @@
-package prisa.com.surveys.executor;
+package prisa.com.surveys.mvp.executor;
 
 import android.util.Log;
 
@@ -11,9 +11,9 @@ import java.util.List;
 import de.greenrobot.event.EventBus;
 import io.realm.Realm;
 import prisa.com.surveys.OnEventSpiceError;
-import prisa.com.surveys.Request.GetAllSurveysRequest;
-import prisa.com.surveys.Response.GetAllSurveyResponse;
-import prisa.com.surveys.model.Survey;
+import prisa.com.surveys.request.GetAllSurveysRequest;
+import prisa.com.surveys.response.GetAllSurveyResponse;
+import prisa.com.surveys.mvp.model.Survey;
 
 /**
  * Created by Admin on 7/19/2016 AD.

@@ -1,4 +1,4 @@
-package prisa.com.surveys.view;
+package prisa.com.surveys.mvp.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

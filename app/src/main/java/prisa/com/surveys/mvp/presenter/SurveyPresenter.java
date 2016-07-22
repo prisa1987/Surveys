@@ -1,4 +1,4 @@
-package prisa.com.surveys.presenter;
+package prisa.com.surveys.mvp.presenter;
 
 import android.content.Context;
 
@@ -9,11 +9,11 @@ import java.util.List;
 
 import de.greenrobot.event.Subscribe;
 import io.realm.Realm;
-import prisa.com.surveys.Response.GetAllSurveyResponse;
-import prisa.com.surveys.executor.SurveyExecutor;
-import prisa.com.surveys.model.Survey;
-import prisa.com.surveys.view.SurveyItemFragment;
-import prisa.com.surveys.viewAction.SurveyViewAction;
+import prisa.com.surveys.response.GetAllSurveyResponse;
+import prisa.com.surveys.mvp.executor.SurveyExecutor;
+import prisa.com.surveys.mvp.model.Survey;
+import prisa.com.surveys.mvp.view.SurveyItemFragment;
+import prisa.com.surveys.mvp.viewAction.SurveyViewAction;
 
 /**
  * Created by Admin on 7/19/2016 AD.
@@ -23,7 +23,7 @@ public class SurveyPresenter extends BasePresenter {
 
     private SurveyViewAction viewAction;
     private List<Survey> surveys;
-    List<SurveyItemFragment> itemFragments = new ArrayList<>();
+    private List<SurveyItemFragment> itemFragments = new ArrayList<>();
 
     public SurveyPresenter(Context context, SpiceManager spiceManager, SurveyViewAction viewAction) {
         super(context, spiceManager);
@@ -44,7 +44,7 @@ public class SurveyPresenter extends BasePresenter {
         viewAction.refreshData();
     }
 
-    SurveyItemFragmentPresenter buildItemPresenter(SurveyItemFragment itemFragment) {
+    private SurveyItemFragmentPresenter buildItemPresenter(SurveyItemFragment itemFragment) {
         return new SurveyItemFragmentPresenter(itemFragment);
     }
 
@@ -52,7 +52,7 @@ public class SurveyPresenter extends BasePresenter {
         return surveys;
     }
 
-    void buildFragmentList() {
+    private void buildFragmentList() {
         for (Survey survey : surveys) {
             SurveyItemFragment fragment = new SurveyItemFragment();
             SurveyItemFragmentPresenter presenter = buildItemPresenter(fragment);

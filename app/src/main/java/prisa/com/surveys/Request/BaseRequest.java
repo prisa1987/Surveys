@@ -1,4 +1,4 @@
-package prisa.com.surveys.Request;
+package prisa.com.surveys.request;
 
 /**
  * Created by Admin on 7/19/2016 AD.

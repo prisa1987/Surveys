@@ -1,6 +1,6 @@
-package prisa.com.surveys.Request;
+package prisa.com.surveys.request;
 
-import prisa.com.surveys.Response.GetAllSurveyResponse;
+import prisa.com.surveys.response.GetAllSurveyResponse;
 import prisa.com.surveys.SurveyAPI;
 import retrofit.Call;
 

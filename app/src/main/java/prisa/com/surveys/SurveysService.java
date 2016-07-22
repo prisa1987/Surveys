@@ -1,7 +1,6 @@
 package prisa.com.surveys;
 
 import android.app.Application;
-import android.util.Base64;
 import android.util.Log;
 
 import com.octo.android.robospice.SpiceService;
@@ -26,7 +25,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import prisa.com.surveys.Request.BaseRequest;
+import prisa.com.surveys.request.BaseRequest;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 

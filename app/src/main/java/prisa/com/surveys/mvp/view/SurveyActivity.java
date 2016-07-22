@@ -1,4 +1,4 @@
-package prisa.com.surveys.view;
+package prisa.com.surveys.mvp.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,8 +14,8 @@ import com.viewpagerindicator.CirclePageIndicator;
 import butterknife.BindView;
 import butterknife.OnClick;
 import prisa.com.surveys.R;
-import prisa.com.surveys.presenter.SurveyPresenter;
-import prisa.com.surveys.viewAction.SurveyViewAction;
+import prisa.com.surveys.mvp.presenter.SurveyPresenter;
+import prisa.com.surveys.mvp.viewAction.SurveyViewAction;
 
 /**
  * Created by Admin on 7/19/2016 AD.
@@ -23,10 +23,10 @@ import prisa.com.surveys.viewAction.SurveyViewAction;
 
 public class SurveyActivity extends BaseActivity implements SurveyViewAction {
 
-    @BindView(R.id.vpSurvey) ViewPager vpSurvey;
-    @BindView(R.id.ciSurvey) CirclePageIndicator ciSurvey;
-    @BindView(R.id.tbSurvey) Toolbar tbSurvey;
-    @BindView(R.id.tbTitle) TextView tbTitle;
+    @BindView(R.id.vpSurvey)  ViewPager vpSurvey;
+    @BindView(R.id.ciSurvey)  CirclePageIndicator ciSurvey;
+    @BindView(R.id.tbSurvey)  Toolbar tbSurvey;
+    @BindView(R.id.tbTitle)  TextView tbTitle;
 
     private SurveyPresenter presenter;
     private SurveyViewpagerAdapter viewPagerAdapter;
@@ -87,7 +87,6 @@ public class SurveyActivity extends BaseActivity implements SurveyViewAction {
         presenter.onPause();
     }
 
-
     @Override
     @OnClick(R.id.ivRefresh)
     public void refreshData() {
@@ -112,6 +111,7 @@ public class SurveyActivity extends BaseActivity implements SurveyViewAction {
         public int getCount() {
             return presenter.getItemFragments().size();
         }
+
     }
 
 }
